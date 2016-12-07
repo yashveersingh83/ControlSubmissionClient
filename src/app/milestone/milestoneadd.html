@@ -1,0 +1,45 @@
+﻿<br /> <br />
+<br />
+<br />
+<div class="row">
+    <div class="md-col-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Add MileStone</h3>
+            </div>
+            <div class="panel-body">
+                <form  [formGroup]="form"  (ngSubmit)="saveMileStone()">
+                    <div class="form-group">
+                        <div class="md-col-4">
+                            <label>  MileStone Name:</label>
+                        </div>
+                        <div class="md-col-4">
+                            <input  formControlName="Name" />
+                          
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="md-col-4"><label> MileStone Date</label></div>
+                        <div class="md-col-4">
+                            <input formControlName="Id" hidden="hidden"/>
+                            <input formControlName="StartDate"  />
+
+                           
+                           
+                        </div>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+
+                        <button type="button" class="btn btn-primary pull-left">Cancel</button>
+                        &nbsp;
+
+                        <button type="submit"  class="btn btn-primary pull-right">Save</button>
+                    </div>
+                </form>
+
+                {{ newMileStone|json }}
+            </div>
+        </div>
+    </div>
+</div>

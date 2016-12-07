@@ -1,0 +1,13 @@
+﻿.collapsible-indicator {
+    font-size: 30px;
+    line-height:30px;
+}
+
+
+.collapsible-section {
+    padding: 0 20px 20px 20px;
+}
+
+.collapsed .collapsible-section {
+    display: none;
+}
