@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MileStoneService} from '../mileStone/milestone.service';
 import {RecepientService} from '../recepient/recepient.service';
 import {CustomCommonModule} from '../common/common.module';
+import {CounterInputComponent} from './input-counter-component';
 @NgModule({
     imports: [
         CommonModule,
@@ -18,10 +19,7 @@ import {CustomCommonModule} from '../common/common.module';
     ],
     declarations: [
         InformationRequestComponent,AddInformationRequestComponenet
-        , DropDownDirective
-       
-        
-
+        , DropDownDirective,CounterInputComponent
     ],
     providers: [
         InformationRequestService, MileStoneService, RecepientService

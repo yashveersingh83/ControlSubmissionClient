@@ -2,8 +2,8 @@
 import {InformationRequestService} from './informationrequest.service'
 import { Router }              from '@angular/router';
 import {InformationRequest} from '../models/informationrequestModel';
-import { Observable }     from 'rxjs/Observable';
-
+import { Observable }     from 'rxjs/Observable'
+import {FormGroup,ReactiveFormsModule,FormBuilder} from '@angular/forms';
 @Component({
   //  moduleId: module.id,
     templateUrl: './informationrequest.html'
@@ -13,17 +13,20 @@ export class InformationRequestComponent implements OnInit
 {
     informationrequests: InformationRequest[];
     errorMessage: string;
-
+    outerCounterValue: number= 4;
+form: FormGroup;
     public currentPage: number = 1;
     public totalItems: number = 1;
     public maxSize: number = 3;
 
-    constructor(private _service: InformationRequestService, private router: Router) {
+    constructor(private _service: InformationRequestService, private router: Router,private fb: FormBuilder) {
     }
 
     ngOnInit() {      
         this.getInformationRequests(this.currentPage,this.maxSize);
-       // var t = deserializeArray(this.informationrequests,InformationRequest);
+       this.form = this.fb.group({
+      counter: 5
+    });
     }
     public setPage(pageNo: number): void {
         this.currentPage = pageNo;
@@ -50,4 +53,5 @@ export class InformationRequestComponent implements OnInit
     {
         this.router.navigate(['/informationrequest/add']);
     }
+    
 }

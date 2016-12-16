@@ -8,7 +8,7 @@
 <div class="panel panel-default">
     <!--<my-spinner [isRunning]="isRequesting"></my-spinner>-->
     <div class="panel-heading">
-        <h3 class="panel-title">  InformationRequests  </h3>
+        <h3 class="panel-title">  InformationRequests  {{outerCounterValue}}  </h3>
         <button type="button" class="btn btn-primary  pull-right" (click)="onAdd()">Add InformationRequest</button>
     </div>
     <div class="panel-body" *ngIf="informationrequests && informationrequests.length > 0">
@@ -41,6 +41,14 @@
     </div>
     <div class="panel-body" *ngIf="informationrequests && informationrequests.length == 0">
         No Records present.
+    </div>
+     <div class="panel-body">
+
+          <form [formGroup]="form">
+      <counter-input formControlName="counter"></counter-input>
+    </form>
+
+    <pre>{{ form.value | json }}</pre>
     </div>
 </div>
 
