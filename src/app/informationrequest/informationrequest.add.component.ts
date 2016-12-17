@@ -13,8 +13,6 @@ import { Observable } from 'rxjs/Observable';
 export class AddInformationRequestComponenet implements OnInit {
 
     mileStonedataSourceList: SelectListItem[];
-    mid: string = 'MileStoneID';
-    mname: string = 'MileStoneID';
     selectedMileStone: number; selectedRecepient: number;
     errorMessage: string; milestomes: MileStoneModel[];
     form: FormGroup;
@@ -50,7 +48,7 @@ export class AddInformationRequestComponenet implements OnInit {
     }
 
     onSelectMileStone(selectedItem) {
-        debugger;
+        
         console.log('MileStone Selected' + selectedItem);
     }
     onSelectRecepient(selectedItem) {
@@ -67,9 +65,9 @@ export class AddInformationRequestComponenet implements OnInit {
             ;
     }
     onMileStoneSelect(selectedItem) {
-        debugger;
-        this.selectedMileStone = selectedItem;
+      //  debugger;
+       // this.selectedMileStone = selectedItem;
        // this.form.controls['MileStoneID'].value = selectedItem;
-        console.log('ssss ' + this.selectedMileStone);
+     //   console.log('ssss ' + this.selectedMileStone);
     }
 }

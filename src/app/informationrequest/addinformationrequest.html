@@ -23,8 +23,8 @@
                             InformationRequired is required
                         </div>
                     </div>
-                    <div class="form-group">
-                        <!--<div class="md-col-4"><label> MileStone Date</label></div>-->
+                    <!-- <div class="form-group">
+                       <div class="md-col-4"><label> MileStone Date</label></div>
                         <div class="md-col-4">
                             <div class="md-col-4">
                                 <label for="sel1">MileStone Date:</label>
@@ -41,7 +41,7 @@
                                               <div class="error" [ngClass]="{'alert-danger':!form.controls['MileStoneID'].valid && form.controls['MileStoneID'].touched}" *ngIf="form.get('MileStoneID').hasError('required') && form.get('MileStoneID').touched">
                                 MileStone is required
                             </div>
-                        </div>
+                        </div>-->
                          <!--   <div class="md-col-4">
                                 <select class="list-group" (change)="onSelectMileStone($event.target.value)"
                                         name="MileStoneID" formControlName="MileStoneID">
@@ -50,11 +50,13 @@
                                         {{item.name | date: 'yyyy-MM-dd' }}
                                     </option>
                                 </select>
-                            </div>-->
+                            </div>
                            
                         </div>
+                          </div>
+                        -->
                         <!---->
-                    </div>
+                  
                     <div class="form-group">
                         <!--<div class="md-col-4"><label> MileStone Date</label></div>-->
                         <div class="md-col-4">
@@ -76,7 +78,15 @@
                         </div>
 
                     </div>
+     <div class="panel-body">
 
+         <custom-select-list   [dataSourceList]="mileStonedataSourceList"
+                                             formControlName="MileStoneID"
+                                             (onSelectItem)="onMileStoneSelect($event)"
+                                             [controlName]='MileStoneID'
+                                             [controlId]="mid"></custom-select-list>
+     </div>
+        <pre>{{ form.value | json }}</pre>
                     <div class="btn-group pull-right" role="group" aria-label="...">
 
                         <button type="button" class="btn btn-primary pull-left">Cancel</button>

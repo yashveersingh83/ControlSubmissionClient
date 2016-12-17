@@ -11,6 +11,7 @@ import {MileStoneService} from '../mileStone/milestone.service';
 import {RecepientService} from '../recepient/recepient.service';
 import {CustomCommonModule} from '../common/common.module';
 import {CounterInputComponent} from './input-counter-component';
+import {SelectListComponent} from '../directive/select-list-component';
 @NgModule({
     imports: [
         CommonModule,
@@ -19,12 +20,10 @@ import {CounterInputComponent} from './input-counter-component';
     ],
     declarations: [
         InformationRequestComponent,AddInformationRequestComponenet
-        , DropDownDirective,CounterInputComponent
+        , DropDownDirective,CounterInputComponent,SelectListComponent
     ],
     providers: [
         InformationRequestService, MileStoneService, RecepientService
-        
-
     ],
 
 })
