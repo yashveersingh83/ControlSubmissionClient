@@ -2,8 +2,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InformationRequestService } from './informationrequest.service';
 import { MileStoneModel } from '../models/milestoneModel';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators ,AbstractControl,ValidatorFn} from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+
+
 @Component(
     {
         templateUrl: 'addinformationrequest.html',
@@ -41,15 +43,14 @@ export class AddInformationRequestComponenet implements OnInit {
         this.form = new FormGroup({
             Id: new FormControl(),
             InformationRequired: new FormControl('', Validators.required),
-            RecepientID: new FormControl('', Validators.required),
-            MileStoneID: new FormControl('', Validators.required)
+            RecepientID: new FormControl('',   Validators.required, invalidSelectItem(-1)),
+            MileStoneID: new FormControl('',Validators.required, invalidSelectItem(-1))
         });
         this.getMileStoneAndRecepient();
     }
 
     onSelectMileStone(selectedItem) {
-        
-        console.log('MileStone Selected' + selectedItem);
+              console.log('MileStone Selected' + selectedItem);
     }
     onSelectRecepient(selectedItem) {
         console.log('Recepient Selected' + selectedItem);
@@ -70,4 +71,14 @@ export class AddInformationRequestComponenet implements OnInit {
        // this.form.controls['MileStoneID'].value = selectedItem;
      //   console.log('ssss ' + this.selectedMileStone);
     }
+    
+}
+
+export function invalidSelectItem(exculedValue: number): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} => {
+      debugger;
+    let val = control.value;
+    const no = val === exculedValue;
+    return no ? {'selectlist': {val}} : null;
+  };
 }
