@@ -20,16 +20,14 @@ import {SelectListComponent} from '../directive/select-list-component';
         informationRequestRouting,CustomCommonModule
     ],
     declarations: [
-        InformationRequestComponent,AddInformationRequestComponenet
-        , DropDownDirective,CounterInputComponent,SelectListComponent
+        InformationRequestComponent, AddInformationRequestComponenet
+        , DropDownDirective, CounterInputComponent, SelectListComponent
     ],
     providers: [
         InformationRequestService, MileStoneService, RecepientService
     ],
 
 })
-export class InformationRequestModule 
-
+export class InformationRequestModule
     {
-    
 }

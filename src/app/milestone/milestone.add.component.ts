@@ -1,8 +1,8 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MileStoneService } from './milestone.service';
 import { MileStoneModel } from '../models/milestoneModel';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component(
     {
@@ -16,7 +16,7 @@ export class MileStoneAddComponent implements OnInit {
     errorMessage: string;
     form: FormGroup;
 
-    constructor(private _service: MileStoneService, private route: ActivatedRoute,
+    constructor(private _service: MileStoneService,
         private router: Router) {
     }
     ngOnInit() {
@@ -31,9 +31,8 @@ export class MileStoneAddComponent implements OnInit {
         this._service.addMileStone(JSON.stringify(this.form.value)).subscribe(
             milestones => this.newMileStone = milestones,
             error => this.errorMessage = <any>error,
+            () => { this.gotoMileStones();},
         );
-
-        this.gotoMileStones();
     }
     gotoMileStones() { this.router.navigate(['/milestones']); }
 

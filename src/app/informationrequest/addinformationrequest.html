@@ -6,62 +6,35 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Add Information</h3>
-
             </div>
             <div class="panel-body">
+              
                 <form novalidate [formGroup]="form" (ngSubmit)="saveInformationRequest(form)">                   
-                    <div class="form-group">
-                        <div class="md-col-4">
-                            <label>Information Required:</label>
-                        </div>
-                        <div class="md-col-4" 
->
-                            <input formControlName="InformationRequired" />
-                        </div>
-                        <div class="danger"  [ngClass]="{'alert-danger':!form.controls['InformationRequired'].valid && form.controls['InformationRequired'].touched}" *ngIf="form.get('InformationRequired').hasError('required') && form.get('InformationRequired').touched">
-                            InformationRequired is required
-                        </div>
-                    </div>                                  
-                    <div class="form-group">                    
-                        <div class="md-col-4">
-                            <div class="md-col-4">
-                                <label for="sel1">Recepient:</label>
-                            </div>
-                            <div class="md-col-4">
+                    <div class="form-group" [class.has-error]="form.controls['InformationRequired'].invalid && form.controls['InformationRequired'].touched">
+                        
+                            <label class="control-label">Information Required</label>                       
+                            <input formControlName="InformationRequired" class="form-control"/>
+                        </div>                     
+                    <div class="form-group"  [class.has-error]="invalidRecepient">      
+                                <label class="control-label">Recepient:</label>                           
                                  <custom-select formControlName="RecepientID" (change)="onSelectRecepient($event)" 
                                  [optionItems]="recepientsdataSourceList"></custom-select>
-                    <div class="error" [ngClass]="{'alert-danger':form.controls.RecepientID.value==-1}"  *ngIf="form.controls.RecepientID.value==-1">
-                                    Recepient is required
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="form-group">                      
-                        <div class="md-col-4">
-                            <div class="md-col-4">
-                                <label for="sel1">MileStone:</label>
-                            </div>
-                            <div class="md-col-4">
-                                 <custom-select formControlName="MileStoneID" (change)="onSelectMileStone($event)" 
-                                 [optionItems]="mileStonedataSourceList"></custom-select>
-
-                                <div class="error" [ngClass]="{'alert-danger':form.controls['MileStoneID'].value==-1}"  *ngIf="form.get('MileStoneID').value==-1">
-                                    MileStone is required
-                                   
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="form-group" [class.has-error]="invalidMileStone"> 
+                         <label class="control-label">MileStone:</label>
+                             <custom-select formControlName="MileStoneID" (change)="onSelectMileStone($event)" 
+                                 [optionItems]="mileStonedataSourceList"></custom-select>                                 
                     </div>
     
-        <pre>{{ form.value | json }}</pre>
+        <pre>{{ form.value | json}}          
+           
+             </pre>
                     <div class="btn-group pull-right" role="group" aria-label="...">
 
                         <button type="button" class="btn btn-primary pull-left">Cancel</button>
                         &nbsp;
-<!--[disabled]="!form.valid"-->
-                        <button type="submit" class="btn btn-primary pull-right" [disabled]="!form.valid">Save</button>
+
+                        <button type="submit" class="btn btn-primary pull-right" [disabled]="validateForm()">Save</button>
                     </div>
                 </form>
             </div>

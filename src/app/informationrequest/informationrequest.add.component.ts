@@ -1,10 +1,10 @@
 ﻿import { SelectListItem } from '../models/selectListItem';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { InformationRequestService } from './informationrequest.service';
 import { MileStoneModel } from '../models/milestoneModel';
-import { FormBuilder, FormGroup, FormControl, Validators ,AbstractControl,ValidatorFn} from '@angular/forms';
+import {  FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-
+import { Router } from '@angular/router';
 
 @Component(
     {
@@ -18,9 +18,10 @@ export class AddInformationRequestComponenet implements OnInit {
     selectedMileStone: number; selectedRecepient: number;
     errorMessage: string; milestomes: MileStoneModel[];
     form: FormGroup;
-
+    invalidMileStone = false;
+    invalidRecepient = false;
     recepientsdataSourceList: SelectListItem[];
-    constructor(private inforService: InformationRequestService
+    constructor(private inforService: InformationRequestService , private router: Router
     ) {
         this.inforService = inforService;
         this.mileStonedataSourceList = [];
@@ -43,42 +44,39 @@ export class AddInformationRequestComponenet implements OnInit {
         this.form = new FormGroup({
             Id: new FormControl(),
             InformationRequired: new FormControl('', Validators.required),
-            RecepientID: new FormControl('',   Validators.required, invalidSelectItem(-1)),
-            MileStoneID: new FormControl('',Validators.required, invalidSelectItem(-1))
+            RecepientID: new FormControl('',   Validators.required),
+            MileStoneID: new FormControl('',Validators.required )
         });
         this.getMileStoneAndRecepient();
     }
 
     onSelectMileStone(selectedItem) {
-              console.log('MileStone Selected' + selectedItem);
+              console.log('MileStone Selected' + selectedItem.target.value);
+              this.invalidMileStone = this.checkIfSelectedItemIsValid(selectedItem.target.value);
     }
     onSelectRecepient(selectedItem) {
-        console.log('Recepient Selected' + selectedItem);
+        console.log('Recepient Selected' + selectedItem.target.value);
+        this.invalidRecepient = this.checkIfSelectedItemIsValid(selectedItem.target.value);
     }
-
+    checkIfSelectedItemIsValid(value)
+    {   if (value === '-1')
+        { return true;  }
+        else{return false; }
+    }
     saveInformationRequest(form) {
-        console.log(this.form);
-        console.log(this.form.valid);
-        this.inforService.addInformationRequest(JSON.stringify(this.form.value)).subscribe(
-            error => this.errorMessage = <any>error,
-            () => {   console.log('Done'); }
+         this.inforService.addInformationRequest(JSON.stringify(this.form.value)).subscribe(
+             infor =>{ console.log(infor); }
+            , error => this.errorMessage = <any>error,
+            () => {   console.log('Done'); this.gotoInformationRequest();}
         )
             ;
     }
-    onMileStoneSelect(selectedItem) {
-      //  debugger;
-       // this.selectedMileStone = selectedItem;
-       // this.form.controls['MileStoneID'].value = selectedItem;
-     //   console.log('ssss ' + this.selectedMileStone);
+    validateForm()
+    {
+        if(this.form.valid === true && this.invalidMileStone === false && this.invalidRecepient === false)
+        { return false;}
+        else{ return true;}
     }
-    
+    gotoInformationRequest() { this.router.navigate(['/informationrequests']); }
 }
 
-export function invalidSelectItem(exculedValue: number): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} => {
-      debugger;
-    let val = control.value;
-    const no = val === exculedValue;
-    return no ? {'selectlist': {val}} : null;
-  };
-}

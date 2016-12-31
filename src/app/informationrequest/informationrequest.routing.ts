@@ -1,4 +1,4 @@
-﻿import {Routes, RouterModule} from '@angular/router'
+﻿import {Routes, RouterModule} from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import {InformationRequestComponent} from './informationrequest.component';
 import {AddInformationRequestComponenet} from './informationrequest.add.component';

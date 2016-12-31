@@ -34,8 +34,8 @@ export class RecepientAddComponent implements OnInit {
         console.log(this.form);
         this._service.addRecepient(JSON.stringify(this.form.value)).subscribe(
             r => this.newRecepient = r,
-            error => this.errorMessage = <any>error);
-            this.gotoRecepients();
+            error => this.errorMessage = <any>error,
+            () => { this.gotoRecepients(); });
     }
 gotoRecepients() { this.router.navigate(['/recepients']); }
 }
