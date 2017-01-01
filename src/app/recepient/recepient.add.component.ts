@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component(
     {
-        templateUrl: 'recepientadd.html',
+        templateUrl: './recepientadd.html',
         providers:[RecepientService]
     }
 )

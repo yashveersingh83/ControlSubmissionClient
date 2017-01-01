@@ -13,9 +13,9 @@ const SOME_SELECT_VALUE_ACCESSOR = {
 @Component({
   selector: 'custom-select',
   template: `
-  <select class="form-control" (change)="change(select.value)" #select>
+  <select class="form-control " (change)="change(select.value)" #select>
   <option value="-1" >select</option>
-  <option *ngFor="let item of optionItems" value="{{ item.id }}" [selected]="_value">
+  <option  *ngFor="let item of optionItems" value="{{ item.id }}" [selected]="_value">
     {{ item.name }}
   </option>
 </select>

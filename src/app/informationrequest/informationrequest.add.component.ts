@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component(
     {
-        templateUrl: 'addinformationrequest.html',
+        templateUrl: './addinformationrequest.html',
         providers: [InformationRequestService]
     }
 )

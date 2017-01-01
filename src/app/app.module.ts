@@ -9,7 +9,8 @@ import { MileStoneModule }         from './milestone/milestone.module';
 import { RecepientModule }         from './recepient/routing.module';
 import { InformationRequestModule} from './informationrequest/informationrequest.module';
 import {CustomCommonModule} from './common/common.module';
-// import {PaginationDirective} from "./directive/paging.directive";
+import { MaterialModule } from '@angular/material';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -17,9 +18,8 @@ import {CustomCommonModule} from './common/common.module';
         MileStoneModule, RecepientModule,InformationRequestModule,
         HttpModule,
         JsonpModule, ReactiveFormsModule, FormsModule
-        ,CustomCommonModule
-       // AlertModule,DatepickerModule,Ng2BootstrapModule
-
+        ,CustomCommonModule,
+         MaterialModule.forRoot()
     ],
     declarations: [AppComponent,
         PageNotFoundComponent

@@ -8,7 +8,7 @@
                 <ul class="nav navbar-nav">
                     <li> <a routerLink="/recepients" routerLinkActive="active">Recepients</a></li>
 <li> <a routerLink="/milestones" routerLinkActive="active">Milestone</a></li>
-<li> <a routerLink="/informationrequests" routerLinkActive="active">informationRequests</a></li>
+<li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
                  
                    
                 </ul>
@@ -16,7 +16,13 @@
         </div>
     </div>
     <div class="container body-content">
+       
 <div> 
+    <md-input-container>
+  <input md-input type="date" placeholder="enter date">
+</md-input-container>
+
+    
         <router-outlet></router-outlet>
         <hr />
         <footer>
