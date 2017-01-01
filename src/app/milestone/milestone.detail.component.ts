@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute }       from '@angular/router';
 import { MileStoneService } from './milestone.service';
 import { MileStoneModel } from '../models/milestoneModel';
-
+import { slideToRight } from '../router.animations';
 import { Subscription } from 'rxjs/Subscription';
 @Component(
     {
@@ -12,7 +12,9 @@ import { Subscription } from 'rxjs/Subscription';
     <label>Id: </label>{{mileStone.Id}} 
     <label>Name </label>{{mileStone.Name}}
     <button (click)="gotoMileStones()" > Back </button>
-</div> `
+</div> `,
+ animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
                       
     }
 )

@@ -3,14 +3,15 @@ import {Router,ActivatedRoute} from '@angular/router';
 import {RecepientModel} from '../models/recepientModel';
 import {RecepientService} from './recepient.service'
 import {Subscription} from 'rxjs/Subscription';
+import { slideToRight } from '../router.animations';
 @Component(
-    {
-
-        template: `<br/><br/><br/><h3>recepient</h3>
+    {        template: `<br/><br/><br/><h3>recepient</h3>
  <div *ngIf="recepient">        
     {{recepient.Id}} 
    
-</div> `
+</div> `,
+ animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
 
     }
 )

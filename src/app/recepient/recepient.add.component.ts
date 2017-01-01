@@ -3,12 +3,14 @@ import { Router, ActivatedRoute }       from '@angular/router';
 import { RecepientService } from './recepient.service';
 import { RecepientModel } from '../models/recepientModel';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-
+import { slideToRight } from '../router.animations';
 
 @Component(
     {
         templateUrl: './recepientadd.html',
-        providers:[RecepientService]
+        providers:[RecepientService],
+         animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 export class RecepientAddComponent implements OnInit {

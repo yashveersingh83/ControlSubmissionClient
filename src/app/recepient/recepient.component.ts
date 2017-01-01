@@ -1,7 +1,7 @@
 ﻿import {Component, OnInit, OnDestroy} from '@angular/core';
 import {RecepientService } from './recepient.service';
 import { RecepientModel} from '../models/recepientModel'
-
+import { slideToRight } from '../router.animations';
 import { Router }       from '@angular/router';
 @Component(
     {
@@ -9,6 +9,8 @@ import { Router }       from '@angular/router';
       //  moduleId: module.id,
         templateUrl:'./recepient.html',
         providers: [RecepientService],
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 export class RecepientComponent implements OnInit {

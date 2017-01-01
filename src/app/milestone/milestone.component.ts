@@ -2,7 +2,7 @@
 import {SelectListItem} from '../models/selectListItem';
 import {MileStoneService} from './milestone.service';
 import { MileStoneModel} from '../models/milestoneModel'
-
+import { slideToRight } from '../router.animations';
 import { Router }              from '@angular/router';
 import {PaginationDirective} from "../directive/paging.directive";
 import {CollapseOnClick} from "../directive/collapse-on-click.directive";
@@ -12,6 +12,8 @@ import {CollapseOnClick} from "../directive/collapse-on-click.directive";
         // moduleId: module.id,
         templateUrl: './milestone.html',
         providers: [MileStoneService],
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 

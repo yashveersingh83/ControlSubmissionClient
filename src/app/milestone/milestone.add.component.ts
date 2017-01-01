@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { MileStoneService } from './milestone.service';
 import { MileStoneModel } from '../models/milestoneModel';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { slideToRight } from '../router.animations';
 @Component(
     {
         //  moduleId: module.id,
         templateUrl: './milestoneadd.html',
-        providers: [MileStoneService]
+        providers: [MileStoneService],
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 export class MileStoneAddComponent implements OnInit {

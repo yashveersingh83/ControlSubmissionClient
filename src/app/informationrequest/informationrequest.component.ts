@@ -4,9 +4,12 @@ import { Router }              from '@angular/router';
 import {InformationRequest} from '../models/informationrequestModel';
 import { Observable }     from 'rxjs/Observable'
 import {FormGroup,ReactiveFormsModule,FormBuilder} from '@angular/forms';
+import { slideToRight } from '../router.animations';
 @Component({
   //  moduleId: module.id,
-    templateUrl: './informationrequest.html'
+    templateUrl: './informationrequest.html',
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
 
 })
 export class InformationRequestComponent implements OnInit
