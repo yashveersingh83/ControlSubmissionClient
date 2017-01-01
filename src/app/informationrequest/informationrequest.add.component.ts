@@ -5,11 +5,13 @@ import { MileStoneModel } from '../models/milestoneModel';
 import {  FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-
+import { slideToRight } from '../router.animations';
 @Component(
     {
         templateUrl: './addinformationrequest.html',
-        providers: [InformationRequestService]
+        providers: [InformationRequestService],
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 export class AddInformationRequestComponenet implements OnInit {
