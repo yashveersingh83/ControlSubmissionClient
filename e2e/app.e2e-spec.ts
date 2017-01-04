@@ -7,8 +7,10 @@ describe('control-submission-client App', function() {
     page = new ControlSubmissionClientPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying ControlSubmissionClient', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('ControlSubmissionClient');
   });
+  
 });
+

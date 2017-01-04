@@ -1,44 +1,35 @@
 ﻿import { RecepientModel} from '../models/recepientModel'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { Observable }     from 'rxjs/Observable';
-
 import 'rxjs/Rx';
-
 
 @Injectable()
 export class RecepientService {
-    
-
     recepients: RecepientModel[]
-    private url: string = "http://localhost/ControlSubmissionApi/api/Recepients";
+    private url: string = 'http://localhost/ControlSubmissionApi/api/Recepients';
     constructor(private http: Http) {
     }
     getRecepients(): Observable<RecepientModel[]> {
 
         return this.http.get(this.url)
-            .map((response: Response) => <RecepientModel[]>response.json())            
+            .map((response: Response) => <RecepientModel[]>response.json()) 
             .catch(this.handleError);
-        
-
     }
 
     getPagedRecepient(page: number): Observable<RecepientModel[]> {
-        return this.http.get(this.url)           
+        return this.http.get(this.url)
             .map((response: Response) => <RecepientModel[]>response.json())
             .catch(this.handleError);
-
-
     }
     private extractData(res: Response) {
-       
         let body = res.json();
         return body.data  || {};
     }
     getRecepient(id: number): Observable<RecepientModel> {
 
-        console.log("URL:" + this.url);
-        return this.http.get("http://localhost/ControlSubmissionApi/api/Recepients"+"/"+id)
+        console.log('URL:' + this.url);
+        return this.http.get('http://localhost/ControlSubmissionApi/api/Recepients'+"/"+id)
             .map((response: Response) => <RecepientModel>response.json())
             .catch(this.handleError);
 
@@ -50,13 +41,12 @@ export class RecepientService {
             .map((response: Response) => <RecepientModel[]>response.json())
             .catch(this.handleError);
     }
-    addRecepient(formdata:string) {
-        //let body = JSON.stringify({ newMileStone });
+    addRecepient(formdata: string) {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.url, formdata, options)
-            .map((response: Response) => <RecepientModel>response.json())        
+            .map((response: Response) => <RecepientModel>response.json())
             .catch(this.handleError);
 
     }

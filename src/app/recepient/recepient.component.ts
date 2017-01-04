@@ -14,32 +14,23 @@ import { Router }       from '@angular/router';
     }
 )
 export class RecepientComponent implements OnInit {
-
-
     recepients: RecepientModel[];
     errorMessage: string;
     recepientsName: string;
-
     constructor(private _service: RecepientService, private router: Router) {
 
     }
 
     ngOnInit() {
         this.getRecepient();
-
     }
 
-    private getRecepient() {
-
+    public getRecepient() {
         this._service.getRecepients()
             .subscribe(
             r => this.recepients = r,
             error => this.errorMessage = <any>error);
-
-
     }
-
-
     onSelect(recp: RecepientModel) {
         console.log(recp);
         this.router.navigate(['/recepients', recp.Id]);
