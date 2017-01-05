@@ -1,25 +1,22 @@
- <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-               <h1 style="color:whitesmoke" >{{title}}</h1>
-            
-            </div>
-            <div class="     collapse">
-                <ul class="nav navbar-nav">
-                    <li> <a routerLink="/recepients" routerLinkActive="active">Recepients</a></li>
-<li> <a routerLink="/milestones" routerLinkActive="active">Milestone</a></li>
-<li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
-                 
-                   
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <h1 style="color:whitesmoke">{{title}}</h1>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li> <a routerLink="/recepients" routerLinkActive="active">Recepients</a></li>
+                <li> <a routerLink="/milestones" routerLinkActive="active">Milestone</a></li>
+                <li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
-        <router-outlet></router-outlet>
-       
-        <footer>
-            <p> My ASP.NET Application</p>
-        </footer>
+</div>
+<div class="body-content" style="padding:10px,10px,10px,10px">
+    <router-outlet></router-outlet>
+    <footer>
+        <p> My ASP.NET Application</p>
+    </footer>
 
-    </div>
+</div>

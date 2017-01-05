@@ -7,7 +7,10 @@ import { Subscription } from 'rxjs/Subscription';
 @Component(
     {
 
-        template: `<h3>Milestones</h3>
+        template: `<br />
+<br />
+<br />
+<br /><h3>Milestones</h3>
  <div *ngIf="mileStone">        
     <label>Id: </label>{{mileStone.Id}} 
     <label>Name </label>{{mileStone.Name}}

@@ -20,6 +20,6 @@ import {CustomCommonModule} from '../common/common.module';
     ],
     providers: [
         MileStoneService
-    ],    
+    ],
 })
 export class MileStoneModule { }
