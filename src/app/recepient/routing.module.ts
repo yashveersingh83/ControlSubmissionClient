@@ -21,5 +21,6 @@ import { RecepientService} from './recepient.service'
     providers: [
         RecepientService
     ]
+
 })
 export class RecepientModule { }

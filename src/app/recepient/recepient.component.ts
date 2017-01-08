@@ -1,6 +1,6 @@
 ﻿import {Component, OnInit, OnDestroy} from '@angular/core';
 import {RecepientService } from './recepient.service';
-import { RecepientModel} from '../models/recepientModel'
+import { RecepientModel} from '../models/recepientModel';
 import { slideToRight } from '../router.animations';
 import { Router }       from '@angular/router';
 @Component(
@@ -14,18 +14,19 @@ import { Router }       from '@angular/router';
     }
 )
 export class RecepientComponent implements OnInit {
-    recepients: RecepientModel[];
-    errorMessage: string;
+    public recepients: RecepientModel[]=[];
+    errorMessage: string = 'none';
     recepientsName: string;
     constructor(private _service: RecepientService, private router: Router) {
 
     }
 
     ngOnInit() {
-        this.getRecepient();
+        console.log('init');
+        this.getRecepients();
     }
 
-    public getRecepient() {
+    public getRecepients() {
         this._service.getRecepients()
             .subscribe(
             r => this.recepients = r,
