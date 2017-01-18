@@ -8,4 +8,9 @@ export class ControlSubmissionClientPage {
   getHeadingText() {
     return element(by.css('h3')).getText();
   }
+
+  checkAddButton() {
+
+    return element(by.id('addRecepient'));
+  }
 }

@@ -10,22 +10,24 @@ import { RecepientModule }         from './recepient/routing.module';
 import { InformationRequestModule} from './informationrequest/informationrequest.module';
 import {CustomCommonModule} from './common/common.module';
 import { MaterialModule } from '@angular/material';
-
+import {AppRecepientService} from './app.static.service';
+import {LoginService} from './login.service';
+import { LoginModule } from './login/login.module';
 @NgModule({
     imports: [
         BrowserModule,
-        routing,
+        routing,LoginModule,
         MileStoneModule, RecepientModule,InformationRequestModule,
         HttpModule,
         JsonpModule, ReactiveFormsModule, FormsModule
         ,CustomCommonModule,
-         MaterialModule.forRoot()
+         MaterialModule.forRoot(),
     ],
     declarations: [AppComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
     ],
     providers: [
-        appRoutingProviders
+        appRoutingProviders , AppRecepientService , LoginService
     ],
    exports:[],
     bootstrap: [AppComponent]

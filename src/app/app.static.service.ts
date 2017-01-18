@@ -1,8 +1,8 @@
-import { RecepientModel } from '../models/recepientModel';
-import { RecepientService } from './recepient.service';
+import { RecepientModel } from './models/recepientModel';
+
 import 'rxjs/Rx';
 import { Observable }     from 'rxjs/Observable';
-export class StaticRecepientService extends RecepientService
+export class AppRecepientService 
 {
     // tslint:disable-next-line:no-unused-variable
      data: RecepientModel[]=[];

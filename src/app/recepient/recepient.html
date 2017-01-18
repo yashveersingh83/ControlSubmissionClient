@@ -24,7 +24,7 @@
                     <th>LastName</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <tr *ngFor="let  recepient of recepients">
                     <td> <input type="button" class="btn btn-primary btn-xs"  value="View" (click)="onSelect(recepient)" /> </td>
                     <th scope="row"> <a></a>   {{recepient.Id}}</th>

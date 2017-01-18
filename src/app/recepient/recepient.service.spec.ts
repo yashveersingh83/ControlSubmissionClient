@@ -17,7 +17,7 @@ describe('RecepientService', () => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
             providers: [
-                RecepientService,StaticRecepientService,
+                RecepientService, StaticRecepientService,
                 MockBackend,
                 BaseRequestOptions,
                 {
