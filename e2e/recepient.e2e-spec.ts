@@ -1,37 +1,35 @@
+import { by, element } from 'protractor/built';
 import { ControlSubmissionClientPage } from './recepient.po';
 import {browser} from 'protractor';
 describe('control-submission-client recepient', function() {
   let page: ControlSubmissionClientPage;
-
   beforeEach(() => {
     page = new ControlSubmissionClientPage();
     page.navigateTo();
   });
-    
+
   it('should display message saying having h3 ', () => {   // page.navigateTo();
     expect(page.getHeadingText()).toEqual('Recepients');
   });
+
   it('should have add recepient button ',() =>{
-
-      expect(page.checkAddButton().getText()).toEqual('Add Recepient');
+    expect( element(by.buttonText('Add Recepient'))).toBeTruthy();
   });
-  it('should nagigate to add recepient page on button click ',() =>{
 
-  //    page.navigateTo();
-     browser.sleep(500);
-      console.log(page.checkAddButton());
-      page.checkAddButton().then(function () {
-        browser.sleep(500);
-        browser.getAllWindowHandles().then(function (handles) {
-          let  newWindowHandle = handles[1]; // this is your new window
-            browser.switchTo().window(newWindowHandle).then(function () {
-                // fill in the form here
-                expect(browser.getCurrentUrl()).toMatch(/\/url/);
-            });
-        });
-    });
+
+  it('should navigate to add recepient page on button click ', () =>  {
+    browser.waitForAngular();
+     let elm = element(by.buttonText('Add Recepient')).click();
+    expect(browser.getCurrentUrl()).toMatch('recepient/add');
 
   });
+
+  it('should navigate to add recepient page and should create a new recepient and navigate back to recepient page',
+  ()=>{
+
+  }
+  
+  );
 
 });
 

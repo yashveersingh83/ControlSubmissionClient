@@ -17,7 +17,6 @@ export class AppComponent   implements OnInit  {
    this.isLoggedIn = val;
       console.log(val);
     });
-    this.currentDate =  new Date().toString('yyyy/mm/dd');
     console.log('date'+ this.currentDate);
 
   }

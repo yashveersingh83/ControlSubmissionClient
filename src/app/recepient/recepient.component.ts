@@ -9,8 +9,8 @@ import { Router }       from '@angular/router';
       //  moduleId: module.id,
         templateUrl:'./recepient.html',
         providers: [RecepientService],
-        animations: [slideToRight()],
-        host: {'[@slideToRight]': ''}
+     /*   animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}*/
     }
 )
 export class RecepientComponent implements OnInit {

@@ -11,6 +11,5 @@ describe('control-submission-client App', function() {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('ControlSubmissionClient');
   });
-  
 });
 

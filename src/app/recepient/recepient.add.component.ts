@@ -9,8 +9,8 @@ import { slideToRight } from '../router.animations';
     {
         templateUrl: './recepientadd.html',
         providers:[RecepientService],
-         animations: [slideToRight()],
-        host: {'[@slideToRight]': ''}
+        //  animations: [slideToRight()],
+        // host: {'[@slideToRight]': ''}
     }
 )
 export class RecepientAddComponent implements OnInit {

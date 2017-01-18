@@ -10,8 +10,8 @@ import { slideToRight } from '../router.animations';
     {{recepient.Id}} 
    
 </div> `,
- animations: [slideToRight()],
-        host: {'[@slideToRight]': ''}
+//  animations: [slideToRight()],
+//         host: {'[@slideToRight]': ''}
 
     }
 )
