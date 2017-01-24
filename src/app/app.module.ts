@@ -13,6 +13,7 @@ import { MaterialModule } from '@angular/material';
 import {AppRecepientService} from './app.static.service';
 import {LoginService} from './login.service';
 import { LoginModule } from './login/login.module';
+import { DatepickerModule } from 'angular2-material-datepicker';
 @NgModule({
     imports: [
         BrowserModule,
@@ -22,6 +23,7 @@ import { LoginModule } from './login/login.module';
         JsonpModule, ReactiveFormsModule, FormsModule
         ,CustomCommonModule,
          MaterialModule.forRoot(),
+         DatepickerModule
     ],
     declarations: [AppComponent,
         PageNotFoundComponent,

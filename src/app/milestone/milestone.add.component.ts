@@ -17,7 +17,7 @@ export class MileStoneAddComponent implements OnInit {
     newMileStone = new MileStoneModel();
     errorMessage: string;
     form: FormGroup;
-
+    currentDate = new Date();
     constructor(private _service: MileStoneService,
         private router: Router) {
     }
