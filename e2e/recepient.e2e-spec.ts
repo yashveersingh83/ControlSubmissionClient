@@ -26,7 +26,22 @@ describe('control-submission-client recepient', function() {
 
   it('should navigate to add recepient page and should create a new recepient and navigate back to recepient page',
   ()=>{
+      browser.waitForAngular();
+     let elm = element(by.buttonText('Add Recepient')).click();
+     expect(browser.getCurrentUrl()).toMatch('recepient/add');
+    const input = (name: string) => element(by.css('input[ng-reflect-name=\"' + name + '\"]'));
+      expect( by.buttonText('Save')).toBeTruthy();
+      expect( by.buttonText('Cancel')).toBeTruthy();
+    
+ input('FirstName').sendKeys('e2e');
+  input('LastName').sendKeys('e2elastname');
+  input('Division').sendKeys('e2ediv');
+  element(by.buttonText('Save')).click();
+   expect(browser.getCurrentUrl()).toMatch('recepients');
 
+
+
+  
   }
   
   );

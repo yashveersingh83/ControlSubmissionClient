@@ -1,25 +1,41 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <h1 style="color:whitesmoke">{{title}}</h1>
-            <div> User Logged In : {{isLoggedIn}} </div>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li> <a routerLink="/recepients" routerLinkActive="active">Recepients{{totalRecepients}}</a></li>
-                <li> <a routerLink="/milestones" routerLinkActive="active">Milestone{{totalMileStones}}</a></li>
-                <li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
-                <li> <a routerLink="/login" routerLinkActive="active">LogIn {{isLoggedIn}}</a></li>
-            </ul>
+<br /> <br />
+<br />
+<br />
+<div class="row">
+    <div class="md-col-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Add MileStone</h3>
+            </div>
+            <div class="panel-body">
+                <form [formGroup]="form" (ngSubmit)="saveMileStone()">
+                    <div class="form-group">
+                        <div class="md-col-4">
+                            <label>  MileStone Name:</label>
+                        </div>
+                        <div class="md-col-4">
+                            <input formControlName="Name" />
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="md-col-4"><label> MileStone Date</label></div>
+                        <div class="md-col-4">
+                            <input formControlName="Id" hidden="hidden" />
+                            <input formControlName="StartDate" />
+                        </div>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+
+                        <button type="button" class="btn btn-primary pull-left">Cancel</button> &nbsp;
+
+                        <button type="submit" class="btn btn-primary pull-right">Save</button>
+                    </div>
+                </form>
+
+
+            </div>
         </div>
     </div>
-</div>
-<div class="body-content" style="padding:10px,10px,10px,10px">
-    {{currentDate}}
-    <router-outlet></router-outlet>
-    <footer>
-
-        <p> My ASP.NET Application</p>
-    </footer>
-
 </div>

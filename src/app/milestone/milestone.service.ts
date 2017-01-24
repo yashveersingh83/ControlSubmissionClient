@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 export class MileStoneService 
 {
     data: MileStoneModel[];
-    private pagedResult: IPagedResponse<MileStoneModel>;
+    private pagedResult : IPagedResponse<MileStoneModel>;
 
     mileStones: MileStoneModel[]
     private url: string = 'http://localhost/ControlSubmissionApi/api/Milestones';
