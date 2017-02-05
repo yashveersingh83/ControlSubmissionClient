@@ -1,22 +1,28 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-
-            Control Submission
+            <h1>
+                ControlSubmissionClient
+            </h1>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li> <a routerLink="/recepients" routerLinkActive="active">Recepients</a></li>
                 <li> <a routerLink="/milestones" routerLinkActive="active">Milestone</a></li>
                 <li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
-
-
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="/login">Log In</a></li>
+                <li><a href="">LogOut</a></li>
             </ul>
         </div>
     </div>
 </div>
 
+
 <router-outlet></router-outlet>
+
+
 
 <footer>
     <p> My ASP.NET Application</p>

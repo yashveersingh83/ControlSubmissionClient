@@ -33,13 +33,13 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('ControlSubmissionClient');
   }));
 
-it('should have 3 links on menu bar', async (() =>{
+it('should have 5 links on menu bar', async (() =>{
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
     let linkArray = compiled.querySelectorAll('.navbar ul li').length;
     console.log(linkArray);
-    expect(linkArray).toBe(3);
+    expect(linkArray).toBe(5);
 }));
 
 });

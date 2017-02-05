@@ -2,15 +2,15 @@
 import {RecepientService } from './recepient.service';
 import { RecepientModel} from '../models/recepientModel';
 import { slideToRight } from '../router.animations';
-import { Router }       from '@angular/router';
+import { Router } from '@angular/router';
 @Component(
     {
         selector: 'recepientList',
       //  moduleId: module.id,
-        templateUrl:'./recepient.html',
+        templateUrl: './recepient.html',
         providers: [RecepientService],
-     /*   animations: [slideToRight()],
-        host: {'[@slideToRight]': ''}*/
+        animations: [slideToRight()],
+        host: {'[@slideToRight]': ''}
     }
 )
 export class RecepientComponent implements OnInit {

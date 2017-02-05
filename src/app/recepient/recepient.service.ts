@@ -8,17 +8,20 @@ import 'rxjs/Rx';
 export class RecepientService {
     recepients: RecepientModel[]
     private url: string = 'http://localhost/ControlSubmissionApi/api/Recepients';
+      headers = new Headers({ 'Content-Type': 'application/json' });
+    options = new RequestOptions({ headers: this.headers, withCredentials: true });
     constructor(private http: Http) {
     }
     getRecepients(): Observable<RecepientModel[]> {
 
-        return this.http.get(this.url)
+        return this.http.get(this.url,this.options)
             .map((response: Response) => <RecepientModel[]>response.json()) 
             .catch(this.handleError);
     }
 
     getPagedRecepient(page: number): Observable<RecepientModel[]> {
-        return this.http.get(this.url)
+         
+        return this.http.get(this.url, this.options)
             .map((response: Response) => <RecepientModel[]>response.json())
             .catch(this.handleError);
     }
@@ -29,23 +32,21 @@ export class RecepientService {
     getRecepient(id: number): Observable<RecepientModel> {
 
         console.log('URL:' + this.url);
-        return this.http.get('http://localhost/ControlSubmissionApi/api/Recepients'+"/"+id)
+        return this.http.get('http://localhost/ControlSubmissionApi/api/Recepients'+"/"+id  ,  this.options)
             .map((response: Response) => <RecepientModel>response.json())
             .catch(this.handleError);
 
     }
     searchRecepients(name: string): Observable<RecepientModel[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
         return this.http.get(this.url+"/search/"+name)
             .map((response: Response) => <RecepientModel[]>response.json())
             .catch(this.handleError);
     }
     addRecepient(formdata: string) {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.post(this.url, formdata, options)
+       
+        return this.http.post(this.url, formdata, this.options)
             .map((response: Response) => <RecepientModel>response.json())
             .catch(this.handleError);
 
