@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable';
 import { IPagedResponse } from '../models/PagedResult';
 import 'rxjs/Rx';
+import  { Constants } from '../constants';
+
 @Injectable()
-export class MileStoneService 
+export class MileStoneService
 {
     data: MileStoneModel[];
-    private pagedResult : IPagedResponse<MileStoneModel>;
+    private pagedResult: IPagedResponse<MileStoneModel>;
 
     mileStones: MileStoneModel[]
-    private url: string = 'http://localhost/ControlSubmissionApi/api/Milestones';
+    private url: string = Constants.mileStoneApi;
     constructor(private http: Http) {
-
-
     }
     getMilestones(): Observable<MileStoneModel[]> {
 
@@ -33,11 +33,8 @@ export class MileStoneService
             .map((mileStones: MileStoneModel[]) => {
 
                 return mileStones.map(mileStone => {
-                    //  console.log(mileStone);
-                    var t = mileStone.StartDate.toString();
+                    let t = mileStone.StartDate.toString();
                     let i = new SelectListItem(mileStone.Id, t);
-
-                    // console.log(i);   
                     return i;
                 });
             })
@@ -75,7 +72,7 @@ export class MileStoneService
             .catch(this.handleError);
     }
     addMileStone(formdata: string) {
-        //let body = JSON.stringify({ newMileStone });
+
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
@@ -100,11 +97,11 @@ export class MileStoneService
 
     private extractPagedData(res: Response): IPagedResponse<MileStoneModel> {
         let body = res.json();
-        console.log('result' + body);
+        console.log('result' + body.Data);
         return {
             data: <MileStoneModel[]>body.Data,
             total: body.Total
-        }
-    }
 
+        };
+    }
 }

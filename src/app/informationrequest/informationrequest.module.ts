@@ -12,12 +12,12 @@ import {RecepientService} from '../recepient/recepient.service';
 import {CustomCommonModule} from '../common/common.module';
 import {CounterInputComponent} from './input-counter-component';
 import {SelectListComponent} from '../directive/select-list-component';
-
+import { DevExtremeModule } from 'devextreme-angular';
 @NgModule({
     imports: [
         CommonModule,
         FormsModule, ReactiveFormsModule,
-        informationRequestRouting,CustomCommonModule
+        informationRequestRouting,CustomCommonModule, DevExtremeModule
     ],
     declarations: [
         InformationRequestComponent, AddInformationRequestComponenet

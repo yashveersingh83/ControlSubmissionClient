@@ -5,6 +5,7 @@ import {InformationRequest} from '../models/informationrequestModel';
 import { Observable }     from 'rxjs/Observable'
 import {FormGroup,ReactiveFormsModule,FormBuilder} from '@angular/forms';
 import { slideToRight } from '../router.animations';
+import { DevExtremeModule } from 'devextreme-angular';
 @Component({
   //  moduleId: module.id,
     templateUrl: './informationrequest.html',

@@ -1,43 +1,48 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute }       from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecepientService } from './recepient.service';
 import { RecepientModel } from '../models/recepientModel';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { slideToRight } from '../router.animations';
 
 @Component(
     {
         templateUrl: './recepientadd.html',
-        providers:[RecepientService],
-          animations: [slideToRight()],
-         host: {'[@slideToRight]': ''}
+        providers: [RecepientService],
+        animations: [slideToRight()],
+        host: { '[@slideToRight]': '' }
     }
 )
 export class RecepientAddComponent implements OnInit {
     newRecepient: RecepientModel;
     errorMessage: string;
     form: FormGroup;
+    firstName: AbstractControl;
+    lastName: AbstractControl;
+    division: AbstractControl;
     constructor(private _service: RecepientService, private route: ActivatedRoute,
-        private router: Router) {
+        private router: Router, private fb: FormBuilder) {
     }
 
     ngOnInit() {
-
-        // the long way
-        this.form = new FormGroup({
-            Id: new FormControl(),
-            FirstName: new FormControl(),
-            LastName:new FormControl(),
-            Division: new FormControl()
+        this.form = this.fb.group({
+            Id: [''],
+            FirstName: ['', [Validators.required, Validators.minLength(3)]],
+            LastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+            Division: ['', [Validators.required]],
         });
-
+        this.firstName = this.form.controls['FirstName'];
+        this.lastName = this.form.controls['LastName'];
+        this.division = this.form.controls['Division'];
     }
     private saveRecepient() {
+        //  this.validate(params);
         console.log(this.form);
-        this._service.addRecepient(JSON.stringify(this.form.value)).subscribe(
-            r => this.newRecepient = r,
-            error => this.errorMessage = <any>error,
-            () => { this.gotoRecepients(); });
+        ////   this._service.addRecepient(JSON.stringify(this.form.value)).subscribe(
+        //      r => this.newRecepient = r,
+        //      error => this.errorMessage = <any>error,
+        //      () => { this.gotoRecepients(); });
     }
-gotoRecepients() { this.router.navigate(['/recepients']); }
+    gotoRecepients() { this.router.navigate(['/recepients']); }
+
 }

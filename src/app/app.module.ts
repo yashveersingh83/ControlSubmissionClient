@@ -9,7 +9,7 @@ import { MileStoneModule }         from './milestone/milestone.module';
 import { RecepientModule }         from './recepient/routing.module';
 import { InformationRequestModule} from './informationrequest/informationrequest.module';
 import {CustomCommonModule} from './common/common.module';
-//import { MaterialModule } from '@angular/material';
+import { DevExtremeModule } from 'devextreme-angular';
 import {AppRecepientService} from './app.static.service';
 
 import { LoginModule } from './login/login.module';
@@ -21,7 +21,7 @@ import { LoginModule } from './login/login.module';
         HttpModule,
         JsonpModule, ReactiveFormsModule, FormsModule
         ,CustomCommonModule,
-       //  MaterialModule.forRoot(),
+      DevExtremeModule
         // DatepickerModule
     ],
     declarations: [AppComponent,

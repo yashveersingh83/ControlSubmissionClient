@@ -1,29 +1,36 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <h1>
-                ControlSubmissionClient
-            </h1>
+            <a href="../" class="navbar-brand"><span class="text-success"> Control</span></a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li> <a routerLink="/recepients" routerLinkActive="active">Recepients</a></li>
-                <li> <a routerLink="/milestones" routerLinkActive="active">Milestone</a></li>
-                <li> <a routerLink="/informationrequests" routerLinkActive="active">InformationRequests</a></li>
+                <li> <a routerLink="/recepients" routerLinkActive="active"><span class="text-success"> Recepients</span></a></li>
+                <li> <a routerLink="/milestones" routerLinkActive="active"><span class="text-success"> Milestone</span></a></li>
+                <li> <a routerLink="/informationrequests" routerLinkActive="active"><span class="text-success">InformationRequests</span></a></li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
-                <li><a routerLink="/login">Log In</a></li>
-                <li><a href="">LogOut</a></li>
+                <li><a routerLink="/login"><span class="text-success">Log In</span></a></li>
+                <li><a href=""><span class="text-success">LogOut</span></a></li>
+
             </ul>
+
         </div>
     </div>
 </div>
 
+<div class="container">
 
-<router-outlet></router-outlet>
+    <div class="row">
+        <div class="col-md-12" style="padding:10px;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 
-
-
-<footer>
-    <p> My ASP.NET Application</p>
-</footer>
+</div>

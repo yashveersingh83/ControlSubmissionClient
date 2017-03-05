@@ -2,39 +2,36 @@
 <br />
 <br />
 <div class="row">
-    <div class="md-col-8">
-        <div class="panel panel-primary">
+    <div class="col-lg-10">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Add Information</h3>
             </div>
             <div class="panel-body">
-              
-                <form novalidate [formGroup]="form" (ngSubmit)="saveInformationRequest(form)">                   
+
+                <form novalidate [formGroup]="form" (ngSubmit)="saveInformationRequest(form)">
                     <div class="form-group" [class.has-error]="form.controls['InformationRequired'].invalid && form.controls['InformationRequired'].touched">
-                        
-                            <label class="control-label">Information Required</label>                       
-                            <input formControlName="InformationRequired" class="form-control"/>
-                        </div>                     
-                    <div class="form-group"  [class.has-error]="invalidRecepient">      
-                                <label class="control-label">Recepient:</label>                           
-                                 <custom-select formControlName="RecepientID" (change)="onSelectRecepient($event)" 
-                                 [optionItems]="recepientsdataSourceList"></custom-select>
+
+                        <label class="control-label">Information Required</label>
+                        <input formControlName="InformationRequired" class="form-control" />
                     </div>
-                    <div class="form-group" [class.has-error]="invalidMileStone"> 
-                         <label class="control-label">MileStone:</label>
-                             <custom-select formControlName="MileStoneID" (change)="onSelectMileStone($event)" 
-                                 [optionItems]="mileStonedataSourceList"></custom-select>                                 
+                    <div class="form-group" [class.has-error]="invalidRecepient">
+                        <label class="control-label">Recepient:</label>
+                        <custom-select formControlName="RecepientID" (change)="onSelectRecepient($event)" [optionItems]="recepientsdataSourceList"></custom-select>
                     </div>
-    
-        <pre>{{ form.value | json}}          
+                    <div class="form-group" [class.has-error]="invalidMileStone">
+                        <label class="control-label">MileStone:</label>
+                        <custom-select formControlName="MileStoneID" (change)="onSelectMileStone($event)" [optionItems]="mileStonedataSourceList"></custom-select>
+                    </div>
+
+                    <pre>{{ form.value | json}}          
            
              </pre>
                     <div class="btn-group pull-right" role="group" aria-label="...">
 
-                        <button type="button" class="btn btn-primary pull-left">Cancel</button>
-                        &nbsp;
+                        <button type="button" class="btn btn-warning pull-left">Cancel</button> &nbsp;
 
-                        <button type="submit" class="btn btn-primary pull-right" [disabled]="validateForm()">Save</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="validateForm()">Save</button>
                     </div>
                 </form>
             </div>

@@ -3,37 +3,32 @@
 <br />
 <br />
 <br />
-<div class="panel panel-primary">
+<div class="panel panel-default col-lg-10">
     <div class="panel-heading">
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-primary btn-xs pull-right" (click)="onAdd()">Add InformationRequest</button>
+            <button type="button" class="btn btn-success btn-xs pull-right" (click)="onAdd()">Add InformationRequest</button>
         </div>
         <h3 class="panel-title">InformationRequests</h3>
     </div>
     <div class="panel-body" *ngIf="informationrequests && informationrequests.length > 0">
-        <table class="table table-striped table-condensed table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Id</th>
-                    <th>Information Required</th>
-                    <th>Milestone Date</th>
-                    <th>Recepient Name </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let  info of informationrequests">
-                    <td> <input type="button" class="btn btn-primary" value="View" (click)="onSelect(info)" /> </td>
-                    <th scope="row">
-                        <a></a> {{info.Id}}</th>
-                    <td>{{ info.InformationRequired }}</td>
-                    <td>{{info.MileStone.StartDate}}</td>
-                    <td>{{info.Recepient.FirstName +" "+ info.Recepient.LastName }}</td>
 
-                </tr>
+        <dx-load-indicator class='button-indicator' [visible]="loadIndicatorVisible">
+        </dx-load-indicator>
+        <dx-data-grid [dataSource]="informationrequests" [rowAlternationEnabled]="true">
+            <dxo-paging [pageSize]="5"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
+            </dxo-pager>
 
-            </tbody>
-        </table>
+            <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+            <dxo-export [enabled]="true"></dxo-export>
+
+            <dxi-column dataField="InformationRequired"></dxi-column>
+            <dxi-column dataField="MileStone.StartDate"></dxi-column>
+            <dxi-column dataField="Recepient.FirstName"></dxi-column>
+
+        </dx-data-grid>
         <div *ngIf="totalItems >0">
             <ng-pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" (pageChanged)="pageChanged($event)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="First" last-text="Last"></ng-pagination>
         </div>

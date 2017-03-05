@@ -8,7 +8,7 @@ import { Observable }     from 'rxjs/Observable';
 import {IPagedResponse} from '../models/PagedResult';
 import {MileStoneService} from '../mileStone/milestone.service';
 import {RecepientService} from '../recepient/recepient.service'
-
+import  { Constants } from '../constants';
 
 
 @Injectable()
@@ -20,7 +20,7 @@ export class InformationRequestService {
     private pagedResult: IPagedResponse<InformationRequest>;
 
     mileStones: InformationRequest[]
-    private url: string = "http://localhost/ControlSubmissionApi/api/InformationRequests";
+    private url: string = Constants.informationRequestApi;
     constructor(private http: Http , private mileStoneService:MileStoneService,private recepientService:RecepientService ) {
 
 

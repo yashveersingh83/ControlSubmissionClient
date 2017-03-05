@@ -18,6 +18,7 @@ export class MileStoneAddComponent implements OnInit {
     errorMessage: string;
     form: FormGroup;
     currentDate = new Date();
+   
     constructor(private _service: MileStoneService,
         private router: Router) {
     }
@@ -29,7 +30,7 @@ export class MileStoneAddComponent implements OnInit {
         });
     }
     private saveMileStone() {
-        console.log(this.form);
+        console.log('MileStone ' + this.form);
         this._service.addMileStone(JSON.stringify(this.form.value)).subscribe(
             milestones => this.newMileStone = milestones,
             error => this.errorMessage = <any>error,

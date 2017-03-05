@@ -7,13 +7,13 @@ import {MileStoneDetailComponent} from './milestone.detail.component';
 import { MileStoneAddComponent} from './milestone.add.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomCommonModule} from '../common/common.module';
-
+import { DevExtremeModule } from 'devextreme-angular';
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,ReactiveFormsModule,
         mileStoneRouting,
-        CustomCommonModule
+        CustomCommonModule ,DevExtremeModule
     ],
     declarations: [
         MileStoneComponent, MileStoneDetailComponent, MileStoneAddComponent

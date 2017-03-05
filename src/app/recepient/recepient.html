@@ -1,45 +1,37 @@
-﻿<!DOCTYPE html>
-<br />
-<br />
-<br />
-<br />
-
-<div class="panel panel-primary">
-    <!--<my-spinner [isRunning]="isRequesting"></my-spinner>-->
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-primary btn-xs" id="addRecepient" (click)="onAdd()">Add Recepient</button>
+﻿<br/>
+<br/>
+<br/>
+<br/>
+<div class="row">
+    <div class="col-lg-10">
+        <!--<my-spinner [isRunning]="isRequesting"></my-spinner>-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-success btn-xs" id="addRecepient" (click)="onAdd()">Add Recepient</button>
+                </div>
+                <h3 class="panel-title">Recepients</h3>
             </div>
-            <h3 class="panel-title">Recepients</h3>
-        </div>
 
-        <div class="panel-body" *ngIf="recepients && recepients.length > 0">
-            <table class="table table-striped table-condensed table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>LastName</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let  recepient of recepients">
-                        <td> <input type="button" class="btn btn-primary btn-xs" value="View" (click)="onSelect(recepient)" /> </td>
-                        <th scope="row">
-                            <a></a> {{recepient.Id}}</th>
-                        <td>{{ recepient.FirstName }}</td>
-                        <td>{{recepient.LastName }}</td>
-                    </tr>
+            <div class="bs-component" *ngIf="recepients && recepients.length > 0">
+                <dx-data-grid [dataSource]="recepients" [rowAlternationEnabled]="true">
+                    <dxo-paging [pageSize]="5"></dxo-paging>
+                    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
+                    </dxo-pager>
 
-                </tbody>
-            </table>
-        </div>
-        <div class="panel-body" *ngIf="recepients && recepients.length == 0">
-            No Records present.
+                    <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+                    <dxo-export [enabled]="true"></dxo-export>
+
+                    <dxi-column dataField="Id"></dxi-column>
+                    <dxi-column dataField="FirstName"></dxi-column>
+                    <dxi-column dataField="LastName"></dxi-column>
+
+                </dx-data-grid>
+            </div>
+            <div class="panel-body" *ngIf="recepients && recepients.length == 0">
+                No Records present.
+            </div>
         </div>
     </div>
-
-
-    `

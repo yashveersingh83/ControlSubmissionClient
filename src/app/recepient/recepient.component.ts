@@ -3,6 +3,8 @@ import {RecepientService } from './recepient.service';
 import { RecepientModel} from '../models/recepientModel';
 import { slideToRight } from '../router.animations';
 import { Router } from '@angular/router';
+
+
 @Component(
     {
         selector: 'recepientList',

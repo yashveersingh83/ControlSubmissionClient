@@ -3,11 +3,11 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Injectable } from '@angular/core';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx';
-
+import  { Constants } from '../constants';
 @Injectable()
 export class RecepientService {
     recepients: RecepientModel[]
-    private url: string = 'http://localhost/ControlSubmissionApi/api/Recepients';
+    private url: string = Constants.recepientApi;
       headers = new Headers({ 'Content-Type': 'application/json' });
     options = new RequestOptions({ headers: this.headers, withCredentials: true });
     constructor(private http: Http) {

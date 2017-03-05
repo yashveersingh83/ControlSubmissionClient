@@ -1,49 +1,74 @@
-﻿<br /> <br />
-<br />
-<br />
-<div class="row">
-    <div class="md-col-8">
-        <div class="panel panel-primary">
+﻿<br /> <br /><br /><br />
+
+<div class="col-lg-10">
+    <div class="md-col-8 ">
+        <div class="panel panel-default ">
             <div class="panel-heading">
-                <h3 class="panel-title"> Add Recepient</h3>
+                <h3 class="panel-title "> Add Recepient</h3>
             </div>
-            <div class="panel-body">
-                <form [formGroup]="form" (ngSubmit)="saveRecepient()">
-                    <div class="form-group">
-                        <div class="md-col-4">
-                            <label>  First Name:</label>
+            <div class="panel-body ">
+                <dx-validation-group>
+                    <form [formGroup]="form" novalidate (ngSubmit)="saveRecepient()">
+                        <div class="form-group" [ngClass]="{'has-error': (firstName.touched || 
+                                              firstName.dirty) &&
+                                              !firstName.valid }">
+                            <div class="md-col-4">
+                                <label>  First Name:</label>
+                            </div>
+                            <div class="md-col-4">
+                                <dx-text-box formControlName="FirstName"> </dx-text-box>
+                                <span class="help-block" *ngIf="( firstName.touched || 
+                                                         firstName.dirty) && 
+                                                         firstName.errors">
+                            <span *ngIf="firstName.errors.required">
+                                Please enter your first name.
+                            </span>
+                                <span *ngIf="firstName.errors.minlength">
+                                The first name must be longer than 3 characters.
+                            </span>
+                                </span>
+                            </div>
                         </div>
-                        <div class="md-col-4">
-                            <input formControlName="FirstName" />
+                        <div class="form-group" [ngClass]=" {'has-error':( lastName.touched 
+                                                             || lastName.dirty ) && !lastName.valid}">
+                            <div class="md-col-4"><label> LastName</label></div>
+                            <div class="md-col-4">
+                                <input formControlName="Id" hidden="hidden" />
+                                <dx-text-box formControlName="LastName" placeholder="enter last name"> </dx-text-box>
+                                <span class="help-block" *ngIf="(lastName.touched || 
+                                                         lastName.dirty) && 
+                                                         lastName.errors">
+                                <span *ngIf="lastName.errors.required">
+                                   Please enter LastName
+                               </span>
+                                <span *ngIf="lastName.errors.minlength">LastName should be atleast 3 characters</span>
+                                <span *ngIf="lastName.errors.maxlength">LastName should be atmost 10 characters</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="md-col-4"><label> Division</label></div>
+                            <div class="md-col-4">
+                                <dx-text-box formControlName="Division">
 
+                                </dx-text-box>
+
+                            </div>
                         </div>
 
-                    </div>
-                    <div class="form-group">
-                        <div class="md-col-4"><label> LastName</label></div>
-                        <div class="md-col-4">
-                            <input formControlName="Id" hidden="hidden" />
-                            <input formControlName="LastName" />
+                        <div class="btn-group pull-right " role="group " aria-label="... ">
 
+                            <button type="button" class="btn btn-danger pull-left">Cancel</button> &nbsp;
+
+                            <button type="submit" class="btn btn-success pull-right">Save</button>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="md-col-4"><label> Division</label></div>
-                        <div class="md-col-4">
-
-                            <input formControlName="Division" />
-
-                        </div>
-                    </div>
-                    <div class="btn-group pull-right" role="group" aria-label="...">
-
-                        <button type="button" class="btn btn-primary pull-left">Cancel</button> &nbsp;
-
-                        <button type="submit" class="btn btn-primary pull-right">Save</button>
-                    </div>
-                </form>
-
-                {{ newRecepient|json }}
+                    </form>
+                </dx-validation-group>
+                <br>Dirty: {{ firstName.dirty }}
+                <br>touched: {{ firstName.touched }}
+                <br>touched{{ firstName.pristine }}
+                <br>Valid: {{ form.valid }}
+                <br>Value: {{ form.value | json }}
             </div>
         </div>
     </div>
