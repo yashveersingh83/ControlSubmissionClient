@@ -1,69 +1,65 @@
-﻿<!DOCTYPE html>
-<br />
-<br />
-<br />
-<br />
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MileStoneService } from './milestone.service';
+import { MileStoneModel } from '../models/milestoneModel'
+import { slideToRight } from '../router.animations';
+import { Router } from '@angular/router';
+import { DevExtremeModule } from 'devextreme-angular';
+@Component(
+    {
+        selector: 'milestoneList',
+        // moduleId: module.id,
+        templateUrl: './milestone.html',
+        providers: [MileStoneService],
+        animations: [slideToRight()],
+        host: { '[@slideToRight]': '' }
+    }
+)
 
-<div class="panel panel-default col-lg-10">
+export class MileStoneComponent implements OnInit {
 
-    <div class="panel-heading">
-        <!--<span class="glyphicon glyphicon-collapse-down pull-right" *ngIf="!panel.collapsed"></span>
-        <span class="glyphicon glyphicon-collapse-up  pull-right " *ngIf="panel.collapsed"></span>-->
-        <h3 class="panel-title">Search MileStones</h3>
-    </div>
-    <div class="panel-body">
+    public currentPage: number = 1;
+    public totalItems: number = 1;
+    public maxSize: number = 3;
+ loadIndicatorVisible = false;
+    milestones: MileStoneModel[];
+    errorMessage: string;
+    mileStoneName: string;
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">Milestone Name</label>
-            <div class="col-md-2">
-                <input type="text" #mileStoneName placeholder="Search" class="col-md-4 form-control" />
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-success  pull-right" (click)="onSearch(mileStoneName.value)">Search MileStone</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="panel panel-default col-lg-10">
+    constructor(private _service: MileStoneService, private router: Router) {
+ this.loadIndicatorVisible = true;
+    }
+    public setPage(pageNo: number): void {
+        this.currentPage = pageNo;
+        console.log('curretpage: ' + pageNo);
+    };
 
-    <div class="panel-heading">
-        <div class="btn-group pull-right">
-            <button type="button" class="btn btn-success btn-xs pull-right" (click)="onAdd()">Add MileStone</button>
-        </div>
-        <h3 class="panel-title">MileStones</h3>
-    </div>
-    <dx-load-indicator class='<large></large>-indicator' [visible]="loadingVisible">
-    </dx-load-indicator>
+    public pageChanged(event: any): void {
+        console.log('Number items per page: ' + event.itemsPerPage);
+        this.getMileStones(this.currentPage, this.maxSize);
+    };
 
-    <div id="grid" class="panel-body" *ngIf="milestones && milestones.length > 0">
-
-        <dx-data-grid [dataSource]="milestones" [rowAlternationEnabled]="true">
-            <dxo-paging [pageSize]="3"></dxo-paging>
-            <dxo-pager [showPageSizeSelector]="true" [visible]="true" [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
-            </dxo-pager>
-
-            <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
-            <dxo-filter-row [visible]="true"></dxo-filter-row>
-
-            <dxo-export [enabled]="true"></dxo-export>
-
-            <dxi-column dataField="Id"></dxi-column>
-            <dxi-column dataField="Name"></dxi-column>
-            <dxi-column dataField="StartDate" dataType="date"></dxi-column>
-
-        </dx-data-grid>
+    ngOnInit() {
+        this.getMileStones(this.currentPage, this.maxSize);
 
 
-        <div *ngIf="totalItems >0">
+    }
 
-            <ng-pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" (pageChanged)="pageChanged($event)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="First" last-text="Last"></ng-pagination>
-        </div>
-        <!--  -->
-    </div>
-    <div class="panel-body" *ngIf="milestones && milestones.length == 0">
-        No Records present.
-    </div>
-</div>  this.router.navigate(['/milestones', milestone.Id]);
+    private getMileStones(currentPage: number, pageSize: number) {
+  setTimeout(function() {
+            this.loadIndicatorVisible = true;
+        }, 2000);
+        this._service.getPagedMilestones(currentPage, pageSize)
+            .subscribe(
+            milestones => {
+                this.milestones = milestones.data; this.totalItems = milestones.total;
+            },
+            error => this.errorMessage = <any>error ,
+            () => {  this.loadIndicatorVisible = false; });
+
+
+    }
+    onSelect(milestone: MileStoneModel) {
+        this.router.navigate(['/milestones', milestone.Id]);
     }
     onAdd() {
         this.router.navigate(['/milestones/add']);
