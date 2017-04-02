@@ -6,7 +6,7 @@ import { routing,    appRoutingProviders } from './app.routing';
 import { AppComponent }  from './app.component';
 import {PageNotFoundComponent} from './pagenotfound.component';
 import { MileStoneModule }         from './milestone/milestone.module';
-import { RecepientModule }         from './recepient/routing.module';
+import { RecepientModule }         from './recepient/recepient.module';
 import { InformationRequestModule} from './informationrequest/informationrequest.module';
 import {CustomCommonModule} from './common/common.module';
 import { DevExtremeModule } from 'devextreme-angular';

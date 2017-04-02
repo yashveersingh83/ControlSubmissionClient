@@ -6,13 +6,14 @@ import { HttpModule } from '@angular/http';
 import { RecepientService} from './recepient.service';
 import { StaticRecepientService } from './static.recepient.service';
 import 'rxjs/Rx';
+import { DevExtremeModule } from 'devextreme-angular';
 
 describe('should create RecepientComponent', () => {
-  
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [RecepientComponent],
-            imports: [HttpModule,RouterTestingModule],
+            imports: [HttpModule,RouterTestingModule,DevExtremeModule],
             providers: [ {provide: RecepientService , useClass : StaticRecepientService} , { provide: Router}]
         });
     });
@@ -36,8 +37,8 @@ it('should show no records in the table if totalItem =0 ', async (()=>{
 let fixture = TestBed.createComponent(RecepientComponent);
     let app = fixture.debugElement.componentInstance;
     let  de = fixture.debugElement;
-   let el = de.nativeElement;
-    
+    let el = de.nativeElement;
+
     let service = fixture.debugElement.injector.get(RecepientService);
     service.getRecepients().subscribe(  r => { app.recepients = r; 
         expect(app.recepients .length).toBe(4); },
@@ -47,6 +48,6 @@ let fixture = TestBed.createComponent(RecepientComponent);
 
         }
                  })
-});
+}));
 
 });

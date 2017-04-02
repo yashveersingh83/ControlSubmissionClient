@@ -9,7 +9,9 @@ export class RecepientService {
     recepients: RecepientModel[]
     private url: string = Constants.recepientApi;
       headers = new Headers({ 'Content-Type': 'application/json' });
-    options = new RequestOptions({ headers: this.headers, withCredentials: true });
+    options = new RequestOptions({ headers: this.headers
+        //, withCredentials: true 
+    });
     constructor(private http: Http) {
     }
     getRecepients(): Observable<RecepientModel[]> {
@@ -20,7 +22,7 @@ export class RecepientService {
     }
 
     getPagedRecepient(page: number): Observable<RecepientModel[]> {
-         
+
         return this.http.get(this.url, this.options)
             .map((response: Response) => <RecepientModel[]>response.json())
             .catch(this.handleError);

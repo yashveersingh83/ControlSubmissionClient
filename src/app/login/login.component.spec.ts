@@ -64,7 +64,7 @@ describe('should create RecepientComponent', () => {
                  errors = comp.form.controls.firstName.errors || {};
                 console.log('firstname :' + errors['minlength'].actualLength + errors['minlength'].requiredLength   );
                 expect(errors['minlength'].actualLength < errors['minlength'].requiredLength );
-                 debugger;
+
                  fixture.detectChanges();
                 firstName.value = 'yash';
                 firstName.dispatchEvent(new Event('input'));
@@ -83,7 +83,7 @@ it('email field validity', () => {
 
     // Email field is required
     errors = email.errors || {};
-    expect(errors['required']).toBeTruthy();
+    expect(errors['required']).toBeTruthy(); 
 
     // Set email to something
     email.setValue("test");

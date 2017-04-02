@@ -9,47 +9,47 @@
             <div class="panel-body ">
                 <dx-validation-group>
                     <form [formGroup]="form" novalidate (ngSubmit)="saveRecepient()">
-                        <div class="form-group" [ngClass]="{'has-error': (firstName.touched || 
-                                              firstName.dirty) &&
-                                              !firstName.valid }">
+                        <div class="form-group" [ngClass]="{'has-error': (firstNameCtrl.touched || 
+                                              firstNameCtrl.dirty) &&
+                                              !firstNameCtrl.valid }">
                             <div class="md-col-4">
                                 <label>  First Name:</label>
                             </div>
                             <div class="md-col-4">
-                                <dx-text-box formControlName="FirstName"> </dx-text-box>
-                                <span class="help-block" *ngIf="( firstName.touched || 
-                                                         firstName.dirty) && 
-                                                         firstName.errors">
-                            <span *ngIf="firstName.errors.required">
+                                <dx-text-box name="FirstName" formControlName="FirstName"> </dx-text-box>
+                                <span class="help-block" *ngIf="( firstNameCtrl.touched || 
+                                                         firstNameCtrl.dirty) && 
+                                                         firstNameCtrl.errors">
+                            <span *ngIf="firstNameCtrl.errors.required">
                                 Please enter your first name.
                             </span>
-                                <span *ngIf="firstName.errors.minlength">
+                                <span *ngIf="firstNameCtrl.errors.minlength">
                                 The first name must be longer than 3 characters.
                             </span>
                                 </span>
                             </div>
                         </div>
-                        <div class="form-group" [ngClass]=" {'has-error':( lastName.touched 
-                                                             || lastName.dirty ) && !lastName.valid}">
+                        <div class="form-group" [ngClass]=" {'has-error':( lastNameCtrl.touched 
+                                                             || lastNameCtrl.dirty ) && !lastNameCtrl.valid}">
                             <div class="md-col-4"><label> LastName</label></div>
                             <div class="md-col-4">
                                 <input formControlName="Id" hidden="hidden" />
-                                <dx-text-box formControlName="LastName" placeholder="enter last name"> </dx-text-box>
-                                <span class="help-block" *ngIf="(lastName.touched || 
-                                                         lastName.dirty) && 
-                                                         lastName.errors">
-                                <span *ngIf="lastName.errors.required">
+                                <dx-text-box name="LastName" formControlName="LastName" placeholder="enter last name"> </dx-text-box>
+                                <span class="help-block" *ngIf="(lastNameCtrl.touched || 
+                                                         lastNameCtrl.dirty) && 
+                                                         lastNameCtrl.errors">
+                                <span *ngIf="lastNameCtrl.errors.required">
                                    Please enter LastName
                                </span>
-                                <span *ngIf="lastName.errors.minlength">LastName should be atleast 3 characters</span>
-                                <span *ngIf="lastName.errors.maxlength">LastName should be atmost 10 characters</span>
+                                <span *ngIf="lastNameCtrl.errors.minlength">LastName should be atleast 3 characters</span>
+                                <span *ngIf="lastNameCtrl.errors.maxlength">LastName should be atmost 10 characters</span>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="md-col-4"><label> Division</label></div>
                             <div class="md-col-4">
-                                <dx-text-box formControlName="Division">
+                                <dx-text-box name="Division" formControlName="Division">
 
                                 </dx-text-box>
 
@@ -64,9 +64,9 @@
                         </div>
                     </form>
                 </dx-validation-group>
-                <br>Dirty: {{ firstName.dirty }}
-                <br>touched: {{ firstName.touched }}
-                <br>touched{{ firstName.pristine }}
+                <br>Dirty: {{ firstNameCtrl.dirty }}
+                <br>touched: {{ firstNameCtrl.touched }}
+                <br>touched{{ firstNameCtrl.pristine }}
                 <br>Valid: {{ form.valid }}
                 <br>Value: {{ form.value | json }}
             </div>

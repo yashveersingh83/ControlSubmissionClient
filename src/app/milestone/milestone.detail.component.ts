@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs/Subscription';
 </div> `,
  animations: [slideToRight()],
         host: {'[@slideToRight]': ''}
-                      
+
     }
 )
 export class MileStoneDetailComponent implements OnInit, OnDestroy

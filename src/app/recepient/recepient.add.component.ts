@@ -17,9 +17,9 @@ export class RecepientAddComponent implements OnInit {
     newRecepient: RecepientModel;
     errorMessage: string;
     form: FormGroup;
-    firstName: AbstractControl;
-    lastName: AbstractControl;
-    division: AbstractControl;
+    firstNameCtrl: AbstractControl;
+    lastNameCtrl: AbstractControl;
+    divisionCtrl: AbstractControl;
     constructor(private _service: RecepientService, private route: ActivatedRoute,
         private router: Router, private fb: FormBuilder) {
     }
@@ -31,17 +31,17 @@ export class RecepientAddComponent implements OnInit {
             LastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
             Division: ['', [Validators.required]],
         });
-        this.firstName = this.form.controls['FirstName'];
-        this.lastName = this.form.controls['LastName'];
-        this.division = this.form.controls['Division'];
+        this.firstNameCtrl = this.form.controls['FirstName'];
+        this.lastNameCtrl = this.form.controls['LastName'];
+        this.divisionCtrl = this.form.controls['Division'];
     }
     private saveRecepient() {
         //  this.validate(params);
         console.log(this.form);
-        ////   this._service.addRecepient(JSON.stringify(this.form.value)).subscribe(
-        //      r => this.newRecepient = r,
-        //      error => this.errorMessage = <any>error,
-        //      () => { this.gotoRecepients(); });
+           this._service.addRecepient(JSON.stringify(this.form.value)).subscribe(
+              r => this.newRecepient = r,
+             error => this.errorMessage = <any>error,
+              () => { this.gotoRecepients(); });
     }
     gotoRecepients() { this.router.navigate(['/recepients']); }
 

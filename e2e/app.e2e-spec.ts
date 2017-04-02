@@ -7,7 +7,7 @@ describe('control-submission-client App', function() {
     page = new ControlSubmissionClientPage();
   });
 
-  it('should display message saying ControlSubmissionClient', () => {
+  it('should display message saying Control', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('ControlSubmissionClient');
   });

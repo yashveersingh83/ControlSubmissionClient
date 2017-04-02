@@ -4,7 +4,7 @@ import { RecepientModel } from '../models/recepientModel';
 import { ResponseOptions, Response, Http, BaseRequestOptions, RequestMethod, HttpModule } from '@angular/http';
 import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-
+import  { Constants } from '../constants';
 const mockHttpProvider = {
     deps: [MockBackend, BaseRequestOptions],
     useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
@@ -33,7 +33,7 @@ describe('RecepientService', () => {
     it('should construct RecepientService  and check if url of web api point should and get data from mockreceient service', async(inject(
         [RecepientService, MockBackend, StaticRecepientService], (service, mockBackend, staticService) => {
             expect(service).toBeDefined();
-            expect(service.url).toBe('http://localhost/ControlSubmissionApi/api/Recepients');
+            expect(service.url).toBe(Constants.recepientApi);
             staticService.getRecepients().subscribe(r => { this.data = r; console.log(this.data); } );
         })));
 
@@ -64,7 +64,8 @@ describe('RecepientService', () => {
 
             let result = service.getRecepient(1007);
             result.subscribe(
-                r => { selected = r;   console.log(selected); expect (  selected.Id  ).toBe(1007);},
+                r => { selected = r;   console.log(selected);
+                       expect (  selected.Id  ).toBe(1007);},
                 error => this.errorMessage = <any>error,
                 () =>{ }
               })

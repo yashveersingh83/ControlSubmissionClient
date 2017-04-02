@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('ControlSubmissionClient');
+    expect(compiled.querySelector('span').textContent).toContain('ControlSubmissionClient');
   }));
 
 it('should have 5 links on menu bar', async (() =>{
