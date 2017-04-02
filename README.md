@@ -1,6 +1,8 @@
 # ControlSubmissionClient
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
+This sample project is build using angular-cli . The app demonstrate the concept og multuple modules / shared module , http service calling web api . Also creating and using reausable components . Also I added unit testing  as well as mocking of component / htp services . 
+Also this application demonstrate usage of e2e testing .
+
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
